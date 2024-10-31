@@ -38,7 +38,7 @@ public class Example3
 
 public class DailyReportService : BackgroundService
 {
-    //added a logger so we can log the service starting, processing, and ending
+    //RBG Note: added a logger so we can log the service starting, processing, and ending
     private readonly ILogger<DailyReportService> _logger;
     private readonly ReportEngine _reportEngine;
 
@@ -58,10 +58,10 @@ public class DailyReportService : BackgroundService
             //and restarted at noon then it will send an email with users from noon the day before up until noon today.
             //Also, every time the service restarts it will send another email and that might be confusing for end users. A better solution 
             //might be to keep a log of the last run timestamp and use that as the starting time.
-            //when the service starts up, start by looking back at the last 24 hours
         //RBG Note: Adding an ending time to this logic so we know starting time is exactly 24 hours ago. In most cases it won't make a difference
             //but the delay could cause some records to be missed.
         var endingAt = DateTime.Now;
+        //when the service starts up, start by looking back at the last 24 hours
         var startingFrom = endingAt.AddDays(-1);
 
         while (!stoppingToken.IsCancellationRequested)

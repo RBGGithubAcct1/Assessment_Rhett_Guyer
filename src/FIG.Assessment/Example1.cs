@@ -103,7 +103,7 @@ public class Example1
             }
             catch (Exception ex)
             {
-                //Do something with the exception (retry logic, logging, ect...)
+                //Do something with the exception like logging
             }
         }
     }
